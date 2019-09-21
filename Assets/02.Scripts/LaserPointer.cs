@@ -23,13 +23,24 @@ public class LaserPointer : MonoBehaviour
 
     private Transform controllerTr;
 
+    //델리게이트 선언
+    public delegate void PointerInHandler   (GameObject button);
+    public delegate void PointerOutHandler  (GameObject button);
+    public delegate void PointerClickHandler(GameObject button);
+    //이벤트 선언
+    public static event PointerInHandler    OnPointerIn;
+    public static event PointerOutHandler   OnPointerOut;
+    public static event PointerClickHandler OnPointerClick;
+
+    private GameObject prevButton;
+
     void Start()
     {
         pose = GetComponent<SteamVR_Behaviour_Pose>();
         hand = pose.inputSource;
         controllerTr = GetComponent<Transform>();
 
-        layerButton = 1 << LayerMask.NameToLayer("BUTTON_UI"); // 1<<8 = 256
+        layerButton = 1 << LayerMask.NameToLayer("BUTTON_UI");
         //layerButton = 1<<8 | 1<<9;
         //layerButton = ~(1<<8)
 
@@ -43,10 +54,18 @@ public class LaserPointer : MonoBehaviour
         if (Physics.Raycast(ray , out hit, maxDistance, layerButton))
         {
             line.SetPosition(1, new Vector3(0, 0, hit.distance));
+
+            OnPointerIn(hit.collider.gameObject);
+            prevButton = hit.collider.gameObject;
         }
         else
         {
             line.SetPosition(1, new Vector3(0, 0, maxDistance));
+            if (prevButton != null)
+            {
+                OnPointerOut(prevButton);
+                prevButton = null;
+            }
         }
     }
 
