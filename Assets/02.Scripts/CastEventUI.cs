@@ -20,7 +20,7 @@ public class CastEventUI : MonoBehaviour
 
     void OnDiable()
     {
-        //이벤트 해지
+        //이벤트   해지
         laserPointer.PointerIn      -= OnPointerEnter;
         laserPointer.PointerOut     -= OnPointerExit;
         laserPointer.PointerClick   -= OnPointerClick;

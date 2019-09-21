@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.viveconnect.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\GitHub\\ViveConnect\\ViveConnect\\actions.json",
+      "action_manifest_path": "C:\\GitHub\\ViveLecture\\actions.json",
       "strings": {
         "en_us": {
           "name": "ViveConnect [Testing]"
