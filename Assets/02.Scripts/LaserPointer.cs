@@ -51,6 +51,12 @@ public class LaserPointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (prevButton != null)
+        {
+            OnPointerOut(prevButton);
+            prevButton = null;
+        }
+
         ray = new Ray(controllerTr.position, controllerTr.forward);
         if (Physics.Raycast(ray , out hit, maxDistance, layerButton))
         {
@@ -70,11 +76,6 @@ public class LaserPointer : MonoBehaviour
         else
         {
             line.SetPosition(1, new Vector3(0, 0, maxDistance));
-            if (prevButton != null)
-            {
-                OnPointerOut(prevButton);
-                prevButton = null;
-            }
         }
     }
 
