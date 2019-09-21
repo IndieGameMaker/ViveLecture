@@ -44,5 +44,6 @@ public class LaserPointer : MonoBehaviour
 
         //라인렌더러의 폭
         line.widthMultiplier = 0.03f;
+        line.numCapVertices = 10;
     }
 }
