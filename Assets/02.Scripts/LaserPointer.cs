@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Valve.VR;
 
 public class LaserPointer : MonoBehaviour
@@ -57,6 +58,14 @@ public class LaserPointer : MonoBehaviour
 
             OnPointerIn(hit.collider.gameObject);
             prevButton = hit.collider.gameObject;
+
+            if (trigger.GetStateDown(hand))
+            {
+                ExecuteEvents.Execute(hit.collider.gameObject
+                                    , new PointerEventData(EventSystem.current)
+                                    , ExecuteEvents.pointerClickHandler);
+            }
+
         }
         else
         {
