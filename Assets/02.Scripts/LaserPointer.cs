@@ -44,6 +44,10 @@ public class LaserPointer : MonoBehaviour
         {
             line.SetPosition(1, new Vector3(0, 0, hit.distance));
         }
+        else
+        {
+            line.SetPosition(1, new Vector3(0, 0, maxDistance));
+        }
     }
 
     void CreateLine()
