@@ -20,11 +20,29 @@ public class LaserPointer : MonoBehaviour
     {
         pose = GetComponent<SteamVR_Behaviour_Pose>();
         hand = pose.inputSource;
+        CreateLine();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void CreateLine()
+    {
+        //라인렌더러를 생성한 후 변수에 저장
+        line = this.gameObject.AddComponent<LineRenderer>();
+        //로컬좌표계 기준으로 라인렌더러를 드로잉하는 속성
+        line.useWorldSpace = false;
+        line.receiveShadows = false;
+
+        //시작점, 끝점의 갯수
+        line.positionCount = 2;
+        line.SetPosition(0, Vector3.zero);
+        line.SetPosition(1, new Vector3(0, 0, maxDistance));
+
+        //라인렌더러의 폭
+        line.widthMultiplier = 0.03f;
     }
 }
