@@ -19,12 +19,22 @@ public class ButtonBehaviour : MonoBehaviour
 
     void PointerIn(GameObject button)
     {
-
+        if (button == this.gameObject)
+        {
+            ExecuteEvents.Execute(this.gameObject
+                                , new PointerEventData(EventSystem.current)
+                                , ExecuteEvents.pointerEnterHandler);
+        }
     }
 
     void PointerOut(GameObject button)
     {
-        
+        if (button == this.gameObject)
+        {
+            ExecuteEvents.Execute(this.gameObject
+                                , new PointerEventData(EventSystem.current)
+                                , ExecuteEvents.pointerExitHandler);
+        }       
     }
 
 }
