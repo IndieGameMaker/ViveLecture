@@ -29,12 +29,10 @@ public class ButtonBehaviour : MonoBehaviour
 
     void PointerOut(GameObject button)
     {
-        if (button == this.gameObject)
-        {
-            ExecuteEvents.Execute(this.gameObject
-                                , new PointerEventData(EventSystem.current)
-                                , ExecuteEvents.pointerExitHandler);
-        }       
+        ExecuteEvents.Execute(this.gameObject
+                            , new PointerEventData(EventSystem.current)
+                            , ExecuteEvents.pointerExitHandler);
+
     }
 
 }
