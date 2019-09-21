@@ -45,5 +45,8 @@ public class LaserPointer : MonoBehaviour
         //라인렌더러의 폭
         line.widthMultiplier = 0.03f;
         line.numCapVertices = 10;
+        //라인렌더러의 머티리얼 적용
+        line.material = new Material(Shader.Find("Unlit/Color"));
+        line.material.color = defaultColor;
     }
 }
