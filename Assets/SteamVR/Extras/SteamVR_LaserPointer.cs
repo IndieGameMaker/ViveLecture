@@ -20,9 +20,6 @@ namespace Valve.VR.Extras
         bool isActive = false;
         public bool addRigidBody = false;
         public Transform reference;
-
-        public delegate void PointerEventHandler(object sender, PointerEventArgs e);
-        
         public event PointerEventHandler PointerIn;
         public event PointerEventHandler PointerOut;
         public event PointerEventHandler PointerClick;
@@ -167,5 +164,5 @@ namespace Valve.VR.Extras
         public Transform target;
     }
 
-    
+    public delegate void PointerEventHandler(object sender, PointerEventArgs e);
 }

@@ -2,13 +2,13 @@
   "source": "Unity",
   "applications": [
     {
-      "app_key": "application.generated.unity.viveconnect.exe",
+      "app_key": "application.generated.unity.vivelecture.exe",
       "launch_type": "url",
       "url": "steam://launch/",
       "action_manifest_path": "C:\\GitHub\\ViveLecture\\actions.json",
       "strings": {
         "en_us": {
-          "name": "ViveConnect [Testing]"
+          "name": "ViveLecture [Testing]"
         }
       }
     }

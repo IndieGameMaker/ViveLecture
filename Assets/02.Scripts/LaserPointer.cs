@@ -16,17 +16,34 @@ public class LaserPointer : MonoBehaviour
     public Color defaultColor = Color.white;    //광선의 기본 색상
     public Color clickedColor = Color.green;    //클릭했을 때의 색상
 
+    //레이캐스트
+    private Ray ray;
+    private RaycastHit hit;
+    private int layerButton;
+
+    private Transform controllerTr;
+
     void Start()
     {
         pose = GetComponent<SteamVR_Behaviour_Pose>();
         hand = pose.inputSource;
+        controllerTr = GetComponent<Transform>();
+
+        layerButton = 1 << LayerMask.NameToLayer("BUTTON_UI"); // 1<<8 = 256
+        //layerButton = 1<<8 | 1<<9;
+        //layerButton = ~(1<<8)
+
         CreateLine();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ray = new Ray(controllerTr.position, controllerTr.forward);
+        if (Physics.Raycast(ray , out hit, maxDistance, layerButton))
+        {
+            line.SetPosition(1, new Vector3(0, 0, hit.distance));
+        }
     }
 
     void CreateLine()
