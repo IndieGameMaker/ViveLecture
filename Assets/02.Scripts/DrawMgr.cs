@@ -42,7 +42,7 @@ public class DrawMgr : MonoBehaviour
     {
         //빈 게임오브젝트 생성
         GameObject lineObject = new GameObject("Line");
-        lineObject.transform.position = transform.position + pose.GetLocalPosition(rightHand);
+        //lineObject.transform.position = transform.position + pose.GetLocalPosition(rightHand);
 
         //라인렌더러 컴포넌트를 추가
         line = lineObject.AddComponent<LineRenderer>();
