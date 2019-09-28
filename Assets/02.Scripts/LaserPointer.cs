@@ -94,7 +94,8 @@ public class LaserPointer : MonoBehaviour
                 //레이저 길이 조정
                 line.SetPosition(1, new Vector3(0, 0, hit.distance));
                 //포인터의 위치 변경
-                crossHair.transform.position = hit.point;
+                crossHair.transform.position = hit.point + (Vector3.up * 0.05f);
+                crossHair.transform.rotation = Quaternion.LookRotation(hit.normal);
                 crossHair.SetActive(true);
             }
             else
