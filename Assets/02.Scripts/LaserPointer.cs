@@ -34,6 +34,10 @@ public class LaserPointer : MonoBehaviour
     public static event PointerClickHandler OnPointerClick;
 
     private GameObject prevButton;
+    //크로스헤어 프리팹
+    public GameObject crossHairPrefab;
+    //크로스헤어
+    private GameObject crossHair;
 
     void Start()
     {
@@ -41,6 +45,11 @@ public class LaserPointer : MonoBehaviour
         hand = pose.inputSource;
         controllerTr = GetComponent<Transform>();
 
+        if (hand == SteamVR_Input_Sources.RightHand)
+        {
+            crossHairPrefab = Resources.Load<GameObject>("CrossHair");
+            crossHair = Instantiate<GameObject>(crossHairPrefab);
+        }
         layerButton = 1 << LayerMask.NameToLayer("BUTTON_UI");
         //layerButton = 1<<8 | 1<<9;
         //layerButton = ~(1<<8)
