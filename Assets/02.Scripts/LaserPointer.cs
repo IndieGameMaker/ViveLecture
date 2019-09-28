@@ -86,6 +86,23 @@ public class LaserPointer : MonoBehaviour
         {
             line.SetPosition(1, new Vector3(0, 0, maxDistance));
         }
+
+        if (hand == SteamVR_Input_Sources.RightHand)
+        {
+            if (Physics.Raycast(ray, out hit, maxDistance, 1<<10))
+            {
+                //레이저 길이 조정
+                line.SetPosition(1, new Vector3(0, 0, hit.distance));
+                //포인터의 위치 변경
+                crossHair.transform.position = hit.point;
+                crossHair.SetActive(true);
+            }
+            else
+            {
+                crossHair.SetActive(false);
+            }
+        }
+
     }
 
     void CreateLine()
