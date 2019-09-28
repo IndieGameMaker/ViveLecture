@@ -101,7 +101,8 @@ public class LaserPointer : MonoBehaviour
 
                 if (teleport.GetStateUp(hand))
                 {
-                    transform.parent.position = hit.point;
+                   SteamVR_Fade.Start(Color.black, 0.0f);
+                   StartCoroutine(Teleport(hit.point));
                 }
             }
             else
@@ -110,6 +111,13 @@ public class LaserPointer : MonoBehaviour
             }
         }
 
+    }
+
+    IEnumerator Teleport(Vector3 pos)
+    {
+        transform.parent.position = pos;
+        yield return new WaitForSeconds(0.2f);
+        SteamVR_Fade.Start(Color.clear, 0.3f);
     }
 
     void CreateLine()
