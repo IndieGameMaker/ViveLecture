@@ -10,6 +10,7 @@ public class LaserPointer : MonoBehaviour
     [SerializeField]
     private SteamVR_Input_Sources hand;
     public SteamVR_Action_Boolean trigger = SteamVR_Actions.default_InteractUI;
+    public SteamVR_Action_Boolean teleport = SteamVR_Actions.default_Teleport;
 
     //라인렌더러의 속성 설정
     private LineRenderer line;
@@ -97,6 +98,11 @@ public class LaserPointer : MonoBehaviour
                 crossHair.transform.position = hit.point + (Vector3.up * 0.05f);
                 crossHair.transform.rotation = Quaternion.LookRotation(hit.normal);
                 crossHair.SetActive(true);
+
+                if (teleport.GetStateUp(hand))
+                {
+                    transform.parent.position = hit.point;
+                }
             }
             else
             {
