@@ -116,8 +116,8 @@ public class LaserPointer : MonoBehaviour
     IEnumerator Teleport(Vector3 pos)
     {
         transform.parent.position = pos;
-        yield return new WaitForSeconds(0.2f);
-        SteamVR_Fade.Start(Color.clear, 0.3f);
+        yield return new WaitForSeconds(0.1f);
+        SteamVR_Fade.Start(Color.clear, 0.2f);
     }
 
     void CreateLine()
