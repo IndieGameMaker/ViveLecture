@@ -42,7 +42,7 @@ public class DrawMgr : MonoBehaviour
     {
         //빈 게임오브젝트 생성
         GameObject lineObject = new GameObject("Line");
-        //lineObject.transform.position = transform.position + pose.GetLocalPosition(rightHand);
+        //lineObject.transform.position = transform.parent.position + pose.GetLocalPosition(rightHand);
 
         //라인렌더러 컴포넌트를 추가
         line = lineObject.AddComponent<LineRenderer>();
@@ -51,7 +51,7 @@ public class DrawMgr : MonoBehaviour
         mt.color = lineColor;
         line.material = mt;
         //라인렌더러의 속성 설정
-        line.useWorldSpace = false; //로컬좌표 기준으로 생성
+        line.useWorldSpace = false; 
         line.numCapVertices = 20;
         //라인의 폭 설정
         line.widthMultiplier = 0.1f;
