@@ -33,6 +33,7 @@ public class DrawMgr : MonoBehaviour
             Vector3 pos = pose.GetLocalPosition(rightHand);
             //라인의 노드 갯수 증가
             line.positionCount++;
+            
             line.SetPosition(line.positionCount-1, pos);
         }
 
